@@ -7,16 +7,16 @@ class PreferenceManager with ChangeNotifier {
     return _instance;
   }
   late final SharedPreferences _preferences;
-  init() async {
+  Future<void> init() async {
     _preferences = await SharedPreferences.getInstance();
   }
 
   PreferenceManager._internal();
-  setString(String key, String value) async {
+  Future<void> setString(String key, String value) async {
     await _preferences.setString(key, value);
   }
 
-  setBool(String key, bool value) async {
+  Future<void> setBool(String key, bool value) async {
     await _preferences.setBool(key, value);
   }
 
@@ -24,11 +24,11 @@ class PreferenceManager with ChangeNotifier {
     return _preferences.getString(key);
   }
 
-  setDouble(String key, double value) async {
+  Future<void> setDouble(String key, double value) async {
     await _preferences.setDouble(key, value);
   }
 
-  setInt(String key, int value) async {
+  Future<void> setInt(String key, int value) async {
     await _preferences.setInt(key, value);
   }
 
@@ -43,7 +43,7 @@ class PreferenceManager with ChangeNotifier {
     return null;
   }
 
-  remove(String key) {
+  Future<bool> remove(String key) {
     return _preferences.remove(key);
   }
 
